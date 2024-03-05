@@ -1,6 +1,5 @@
 #include "MStringUtil.h"
 #include <string.h>
-#include "MPlatformBase.h"
 
 
 #if (MSTRING_CONVERT == MSTRING_CONVERT_WINAPI)

@@ -1,6 +1,24 @@
 ﻿#pragma once
 
-#include "MPrerequisites.h"
+
+// 플랫폼
+#define MPLATFORM_WINDOWS   1       // Windows
+#define MPLATFORM_LINUX     2       // Linux
+#define MPLATFORM_MAC       3       // Mac       
+
+
+#ifdef _WIN32
+#   define MPLATFORM MPLATFORM_WINDOWS
+#elif __linux__
+#   define MPLATFORM MPLATFORM_LINUX
+#elif __APPLE__
+#   include "TargetConditionals.h"
+#   if TARGET_OS_MAC
+#       define MPLATFORM MPLATFORM_MAC
+#   endif
+#endif
+
+
 
 //-----------------------------------------------------------
 // 플래그 설정
@@ -8,6 +26,7 @@
 #if (MPLATFORM == MPLATFORM_WINDOWS)
 #   define WIN32_LEAN_AND_MEAN			// 불필요한 API 제외
 #	define NOMINMAX						// min/max 매크로 사용 안함
+#	define _CRT_SECURE_NO_WARNINGS
 #endif
 
 
