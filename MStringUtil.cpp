@@ -200,6 +200,18 @@ EMError MStringUtil::Convert(MMemory& outDest, EMCharset inDestCharset, const vo
 #endif
 
 
+MSIZE MStringUtil::GetLength(const MWCHAR* inStr)
+{
+	return ::wcslen(inStr);
+}
+
+// 할당된 사이즈를 얻는다
+MSIZE MStringUtil::GetAllocSize(const MWCHAR* inStr)
+{
+	return (GetLength(inStr) + 1) * sizeof(MWCHAR);
+}
+
+
 
 MSIZE MStringUtil::GetSize(EMCharset inCharset, const void* inStr)
 {

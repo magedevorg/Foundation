@@ -11,15 +11,35 @@ template <typename T>
 class MTSize
 {
 public:
-    void Set(T inX, T inY)
+    MTSize() {}
+    MTSize(T inWidth, T inHeight)
+        : Width(inWidth), Height(inHeight)
+    {}
+
+public:
+    void Set(T inWidth, T inHeight)
     {
-        X = inX; 
-        Y = inY;
+        Width = inWidth;
+        Height = inHeight;
+    }
+
+    MTSize<T>& operator/=(T inValue)
+    {
+        Width /= inValue;
+        Height /= inValue;
+        return *this;
+    }
+
+    MTSize<T> operator/(T inValue)
+    {
+        MTSize<T> temp(Width, Height);
+        temp /= inValue;
+        return temp;
     }
 
 public:
-    T X;
-    T Y;
+    T Width;
+    T Height;
 };
 
 using MIntSize = MTSize<MINT32>;

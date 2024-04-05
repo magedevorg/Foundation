@@ -44,6 +44,13 @@ public:
 
     // 스트링의 사이즈을 구한다(종료 문자 포함)
     static MSIZE GetSize(EMCharset inCharset, const void* inStr);
+
+    // 스트링 길이를 얻는다
+    static MSIZE GetLength(const MWCHAR* inStr);
+
+    // 할당된 사이즈를 얻는다
+    static MSIZE GetAllocSize(const MWCHAR* inStr);
+
  
 protected:
     // 타입으로 케릭터 셋 아이디를 얻는다

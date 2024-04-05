@@ -30,10 +30,17 @@ public:
     }
 
 public:
-    // 할당된 용량을 얻는다
-    MSIZE GetSize() const {
-        return Size;
+    // 문자열 길이를 얻는다
+    MSIZE GetLength() const {
+        return Length;
     }
+
+    // 할당된 용량을 얻는다
+    MSIZE GetAllocSize() const {
+        return AllocSize;
+    }
+
+ 
 
     //---------------------------------------
     // 연산자 오버로딩
@@ -49,7 +56,13 @@ public:
         Copy(inOther.GetStr());
         return *this;
     }
-    
+
+
+    MString operator+(const MString& inOther) const;
+    MString operator+(const MWCHAR* inStr) const;
+
+    // 
+    const MString& operator+=(const MWCHAR* inStr);
 
     const MWCHAR* GetStr() const 
     {
@@ -64,17 +77,21 @@ public:
 
 
     // 포멧 처리
-    void Format(const MWCHAR* inFormat, ...);
+    static MString Format(const MWCHAR* inFormat, ...);
+
 
 protected:
     // 문자열 복사
     void Copy(const MWCHAR* inStr);
 
     // 메모리 할당
-    void Alloc(MSIZE inSize);
+    //void Alloc(MSIZE inSize);
     
 protected:
     MWCHAR* Str = nullptr;
-    MSIZE Size = 0;
+    MSIZE Length = 0;
+
+    // 할당한 사이즈
+    MSIZE AllocSize = 0;
 };
 
