@@ -64,30 +64,45 @@ void MString::Copy(const MWCHAR* inStr)
 {
 	const MSIZE newLength = MStringUtil::GetLength(inStr);
 
+	CopyToCount(inStr, newLength);
+}
+
+void MString::CopyToCount(const MWCHAR* inStr, MINT32 inCount)
+{
 	// 길이를 체크해서 길이가 다르다면 재할당 처리
-	if (newLength != Length)
+	if (inCount != Length)
 	{
 		// 기존 메모리를 해제하고 길이가 있다면 할당
 		MMemoryAllocator::Release(Str);
 		Str = nullptr;
 
 		// 길이 설정
-		Length = newLength;
-		
+		Length = inCount;
+
 		// 할당 사이즈 설정
-		AllocSize = sizeof(MWCHAR) * (newLength + 1);
+		AllocSize = sizeof(MWCHAR) * (inCount + 1);
 
 		// 할당할 사이즈가 있다면 할당
 		if (0 < AllocSize) {
 			Str = (MWCHAR*)MMemoryAllocator::Alloc<MBYTE>(AllocSize);
 		}
 	}
-	
+
 	// 정보가 있다면 카피
 	if (0 < AllocSize) {
 		::memcpy(Str, inStr, AllocSize);
 	}
 }
+
+void MString::CopyTo(MMemory& inMemory, MINT32 inStartIndex, MINT32 inCount)
+{
+	inMemory.Alloc(sizeof(MWCHAR) * (inCount + 1), MTRUE);
+	inMemory.Clear();
+
+	::memcpy(inMemory.GetPointer(), &(Str[inStartIndex]), sizeof(MWCHAR) * inCount);
+}
+
+
 
 /*
 void MString::Alloc(MSIZE inSize)

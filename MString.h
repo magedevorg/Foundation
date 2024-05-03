@@ -80,9 +80,21 @@ public:
     static MString Format(const MWCHAR* inFormat, ...);
 
 
-protected:
     // 문자열 복사
     void Copy(const MWCHAR* inStr);
+    void CopyToCount(const MWCHAR* inStr, MINT32 inCount);
+    
+
+    void CopyTo(MMemory& inMemory, MINT32 inStartIndex, MINT32 inCount);
+
+    MWCHAR operator[](MINT32 inIndex)
+    {
+        return Str[inIndex];
+    }
+
+
+protected:
+    
 
     // 메모리 할당
     //void Alloc(MSIZE inSize);

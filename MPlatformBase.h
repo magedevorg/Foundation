@@ -49,6 +49,7 @@
 #   include <WS2tcpip.h>
 #   include <MSWSock.h>
 #	include <Windows.h>
+#	include <shlwapi.h>
 #elif (MPLATFORM == MPLATFORM_LINUX )
 #   include <sys/epoll.h>       // use epoll
 #elif (MPLATFORM == MPLATFORM_MAC)

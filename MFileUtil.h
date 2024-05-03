@@ -17,9 +17,6 @@ public:
 	static MBOOL SaveToFile(const void* inData, MSIZE inSize, const MString& inPath);
 
 
-	// 颇老阑 积己
-	static MBOOL MakeFile(const MString& inPath);
-
 	// 叼泛配府甫 积己
 	static MBOOL MakeDirectory(const MString& inPath);
 
