@@ -16,5 +16,22 @@ public:
 	static MBOOL SaveToFile(MMemory& inMemory, const MString& inPath);
 	static MBOOL SaveToFile(const void* inData, MSIZE inSize, const MString& inPath);
 
+
+	// 파일을 생성
+	static MBOOL MakeFile(const MString& inPath);
+
+	// 디렉토리를 생성
+	static MBOOL MakeDirectory(const MString& inPath);
+
+private:
+
+#if (MPLATFORM == MPLATFORM_WINDOWS)
+	// 디렉터리가 있는지 체크하고 없다면 생성
+	static MBOOL MakeDir_WINDOWS(const MString& inPath);
+
+	// 디렉터리 생성
+	static MBOOL MakeDirInternal_WINDOWS(const MWCHAR* inPath);
+#endif
+
 };
 
