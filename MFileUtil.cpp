@@ -16,21 +16,21 @@ MBOOL MFileUtil::LoadFile(MMemory& inMemory, const MString& inPath)
 		return MFALSE;
 	}
 	
-	// ÆÄÀÏ »çÀÌÁî¸¦ ±¸ÇÑ´Ù
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½î¸¦ ï¿½ï¿½ï¿½Ñ´ï¿½
 	fseek(file, 0, SEEK_END);
 	const long fileSize = ftell(file);
 
-	// ¸Þ¸ð¸® ÇÒ´ç
+	// ï¿½Þ¸ï¿½ ï¿½Ò´ï¿½
 	inMemory.Alloc(fileSize);
 
-	// ÆÄÀÏ »çÀÌÁî°¡ ÀÖ´Ù¸é ÀÐ´Â´Ù
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½î°¡ ï¿½Ö´Ù¸ï¿½ ï¿½Ð´Â´ï¿½
 	if (0 < fileSize) 
 	{
 		fseek(file, 0, SEEK_SET);
 		fread(inMemory.GetPointer(), fileSize, 1, file);
 	}
 	
-	// ÆÄÀÏÀ» ´Ý´Â´Ù
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ý´Â´ï¿½
 	fclose(file);
 
 	return MTRUE;
@@ -57,7 +57,7 @@ MBOOL MFileUtil::SaveToFile(const void* inData, MSIZE inSize, const MString& inP
 
 	fwrite(inData, inSize, 1, file);
 
-	// ÆÄÀÏÀ» ´Ý´Â´Ù
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ý´Â´ï¿½
 	fclose(file);
 
 	return MTRUE;
@@ -77,25 +77,25 @@ MBOOL MFileUtil::MakeDirectory(const MString& inPath)
 
 	MMemoryI<256> temp;
 
-	// »ç¿ëÇÒ ÀÎµ¦½º
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½
 	MINT32 index = 0;
 
-	// Á¾·á ¹®ÀÚ¿­ÀÌ ³ª¿Ã¶§±îÁö ·çÇÁ
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	while (L'\0' != dir[index])
 	{
-		// µð·ºÅÍ¸® ±¸ºÐÀÚÀÎ°æ¿ì
+		// ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½ï¿½
 		if( L'\\' == dir[index] )
 		{
-			// Ã¼Å©¸¦ À§ÇØ¼­ ÇØ´ç À§Ä¡¸¦ Á¾·á¹®ÀÚ·Î º¯°æ
+			// Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½á¹®ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ï¿½
 			dir.CopyTo(temp, 0, index + 1);
 			
-			// ÇØ´ç °æ·Î¿¡ µð·ºÅÍ¸® »ý¼º
+			// ï¿½Ø´ï¿½ ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 			if (MFALSE == MakeDirInternal_WINDOWS((const WCHAR*)temp.GetPointer())) {
 				return MFALSE;
 			}
 		}
 
-		// ÀÎµ¦½º Áõ°¡
+		// ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		++index;
 	}
 
@@ -106,7 +106,7 @@ MBOOL MFileUtil::MakeDirectory(const MString& inPath)
 
 MBOOL MFileUtil::MakeDirInternal_WINDOWS(const MWCHAR* inPath)
 {
-	// ´ë»ó µð·ºÅÍ¸®°¡ ÀÖ´ÂÁö Ã¼Å©ÇÏ°í ¾ø´Ù¸é »ý¼º
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 	ULONG attr = GetFileAttributesW(inPath);
 	if (attr == INVALID_FILE_ATTRIBUTES)
