@@ -240,6 +240,10 @@ MSIZE MStringUtil::GetSize(EMCharset inCharset, const void* inStr)
 	return capacity;
 }
 
+MINT32 MStringUtil::Compare(const MWCHAR* inStr1, const MWCHAR* inStr2)
+{
+	return ::wcscmp(inStr1, inStr2);
+}
 
 
 // Ÿ������ �ɸ��� �� ���̵� ��´�

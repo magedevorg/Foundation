@@ -3,6 +3,12 @@
 #include <stdarg.h>
 
 
+MBOOL MString::operator==(const MString& inOther)
+{
+	return (0 == MStringUtil::Compare(Str, inOther.GetStr()));
+}
+
+
 MString MString::operator+(const MString& inOther) const
 {
 	return *this + inOther.GetStr();

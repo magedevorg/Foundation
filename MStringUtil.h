@@ -51,6 +51,9 @@ public:
     // 할당된 사이즈를 얻는다
     static MSIZE GetAllocSize(const MWCHAR* inStr);
 
+    // 비교
+    static MINT32 Compare(const MWCHAR* inStr1, const MWCHAR* inStr2);
+
  
 protected:
     // 타입으로 케릭터 셋 아이디를 얻는다

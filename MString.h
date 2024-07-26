@@ -57,6 +57,8 @@ public:
         return *this;
     }
 
+    MBOOL operator==(const MString& inOther);
+
 
     MString operator+(const MString& inOther) const;
     MString operator+(const MWCHAR* inStr) const;
