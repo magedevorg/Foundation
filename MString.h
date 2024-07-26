@@ -57,6 +57,7 @@ public:
         return *this;
     }
 
+    // 비교 연산
     MBOOL operator==(const MString& inOther);
 
 
@@ -65,6 +66,10 @@ public:
 
     // 
     const MString& operator+=(const MWCHAR* inStr);
+
+    
+    bool operator<(const MString& inStr) const; 
+
 
     const MWCHAR* GetStr() const 
     {
