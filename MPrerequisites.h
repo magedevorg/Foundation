@@ -72,3 +72,12 @@
 		STACK.pop();				\
 	}								\
 }									
+
+
+#define MCLEAR_PTR_MAP(MAP)			\
+{									\
+	for (auto& pair : MAP) {		\
+		delete pair.second;			\
+	}								\
+	MAP.clear();					\
+}									

@@ -59,6 +59,11 @@ const MString& MString::operator+=(const MWCHAR* inStr)
 }
 
 
+bool MString::operator<(const MString& inStr) const
+{
+	return ::wcscmp(Str, inStr.Str) < 0;
+}
+
 
 void MString::Copy(const MWCHAR* inStr)
 {
