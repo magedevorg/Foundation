@@ -80,4 +80,13 @@
 		delete pair.second;			\
 	}								\
 	MAP.clear();					\
-}									
+}				
+
+
+#define MCLEAR_PTR_LIST(LIST)		\
+{									\
+	for (auto& item : LIST) {		\
+		delete item;				\
+	}								\
+	LIST.clear();					\
+}
